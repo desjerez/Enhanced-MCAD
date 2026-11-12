@@ -4,9 +4,6 @@
 
 Enhanced-MCAD classifies Software-Defined Network (SDN) traffic as **Normal, Reconnaissance, Phishing (credential attacks) or Malware (DDoS)**. It compares a classical random forest with three deep learning models (MLP, Transformer, GraphSAGE GNN) and an ensemble, and uses **GNNExplainer** to show what drives the GNN's attack predictions.
 
-**The main finding is about evaluation.** With a random train/test split, every model scores about 100%. That's leakage: each capture is a time series of cumulative counters, so near-identical neighbouring rows end up on both sides of the split. A **chronological split** (train on the first 80% of each capture, test on the last 20%) shows the real difficulty. Turning the counters into **per-interval rates** recovers most of the accuracy honestly.
-
-**Authors:** Destiny Jerez and Rashmi Raveendran, Montclair State University
 
 ---
 
@@ -23,7 +20,7 @@ Enhanced-MCAD classifies Software-Defined Network (SDN) traffic as **Normal, Rec
 
 Removing the IP and MAC addresses isn't enough; the random split still leaks through the counters. Under the honest chronological split, rate features add 13 points, which is more than any change of model.
 
-## 2. Model comparison (same unseen test set)
+## 2. Model comparison
 
 Each model trains on 80,000 balanced flows from the first 80% of every capture and is tested on 32,000 balanced flows from the last 20%.
 
